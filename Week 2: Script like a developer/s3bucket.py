@@ -1,5 +1,5 @@
-import boto3
 import sys
+import boto3
 
 try:
     def main():
@@ -27,3 +27,4 @@ bucket_name = sys.argv[1]
 
 if __name__ == '__main__':
     main()
+    
