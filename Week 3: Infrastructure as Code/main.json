@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "defaultValue": "pip-vNIC01"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "westeurope"
+    }
+  },
+  "functions": [],
+  "variables": {
+    "ipsku": "Basic"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2020-06-01",
+      "name": "pip-vNIC01",
+      "location": "westeurope",
+      "sku": {
+        "name": "[variables('ipsku')]"
+      },
+      "properties": {
+        "dnsSettings": {
+          "domainNameLabel": "admasoft12"
+        },
+        "publicIPAllocationMethod": "Static"
+      }
+    }
+  ],
+  "outputs": {
+    "id": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', 'pip-vNIC01')).ipAddress]"
+    }
+  },
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.3.1.62928",
+      "templateHash": "17996653796032745044"
+    }
+  }
+}
