@@ -9,6 +9,14 @@ resource "aws_security_group" "Allow_8080" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+   ingress {
+    description = "HTTPS to VPC"
+    from_port   = 443
+    to_port     = 433
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 data "aws_ami" "ubuntu" {
   most_recent = true
